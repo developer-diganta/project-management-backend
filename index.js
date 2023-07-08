@@ -17,11 +17,17 @@ const addOrganisation = require("./routes/addOrganisation");
 const loginOrganisation = require("./routes/loginOrganisation");
 const addMember = require("./routes/addMember");
 const memberSignup = require("./routes/memberSignup");
+const getOrganisationDetails = require("./routes/getOrganisationDetails");
+const addTask = require("./routes/addTask");
+const acceptInvitation = require("./routes/acceptInvitation");
 
 app.use("/", home)
 app.use("/", addOrganisation)
 app.use("/", loginOrganisation)
 app.use("/", addMember)
 app.use("/", memberSignup)
+app.use("/", getOrganisationDetails)
+app.use("/", addTask)
+app.use("/", acceptInvitation)
 
 module.exports = app;

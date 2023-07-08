@@ -2,7 +2,7 @@ Members = {
 	orgId: String,
 	name: String,
 	email: String,
-	phoneNo: Number,
+	phoneNo: String,
 	tasks:Array,
 	notifications: Array,
 	meeting:Array,

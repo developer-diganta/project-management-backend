@@ -1,6 +1,6 @@
 Organisation = {
     name:String,
-    phoneNo:Number,
+    phoneNo:String,
     email:String,
     location:String,
     password:String

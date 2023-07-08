@@ -20,12 +20,10 @@ const addOrganisation = async (req,res) => {
         
         const validate = await joi.organisationSignUpSchema.validateAsync({ name,email,phoneNo,location,password });
         bcrypt.hash(password, saltRounds, async (err, hash) => {
-
-            const organisation = await models.Organisation.find({ $or: [{email:email},{phoneNo:phoneNo}]}).exec();
+            const organisation = await models.Organisation.find({email:email}).exec();
         
-            console.log(organisation)
             if(organisation.length){
-                res.status(404).json({"message":"Organisation already exists"});
+                res.status(401).json({"message":"Organisation already exists"});
                 return;
             }
     

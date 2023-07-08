@@ -7,7 +7,7 @@ const addMember = async(req,res) => {
         id,
         email
     } = req.body;
-
+    
     try{
         // const validate =
         // const organisation = await models. 

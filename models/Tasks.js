@@ -4,10 +4,11 @@ Tasks = {
 	progress: String,
 	github:String,
 	notifications:String,
-    startDate: Date,
-    endDate: Date,
-    extension: Date,
-    orgId: String
+    startDate: String,
+    endDate: String,
+    extension: String,
+    orgId: String,
+	createdBy:String
 }
 
 module.exports = Tasks;
