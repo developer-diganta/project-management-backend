@@ -18,6 +18,7 @@ const loginOrganisation = async (req,res) => {
         const validate = await joi.organisationLoginSchema.validateAsync({ email,password });
         const organisation = await models.Organisation.findOne({email:email}).exec();
         console.log(organisation)
+        console.log("HERE")
         if(!organisation){
             res.status(404).json({"message":"Not Found"});
             return;
@@ -25,12 +26,13 @@ const loginOrganisation = async (req,res) => {
         bcrypt.compare(password, organisation.password, (error,result) =>
         {
             console.log("a")
+            console.log(result)
             if(!result){
                 res.status(401).json({"message":"Unauthorized"})
                 return;
             }
             const token = generateToken(email);
-            res.status(200).json({token:token, id:organisation._id, email:email})
+            res.status(200).json({token:token, id:organisation._id, email:email, name: organisation.name, phoneNo: organisation.phoneNo})
         })
 
     }catch(error){

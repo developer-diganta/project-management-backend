@@ -11,8 +11,9 @@ const acceptInvitation = async(req,res) => {
         // const validate =
         // const organisation = await models. 
 
-        const member = await models.Member.find(id).exec();
-        if(!member.length){
+        const member = await models.Member.findById(id).exec();
+        console.log(member)
+        if(!member){
             res.status(404).json({"message":"Member not found"});
             return;
         }

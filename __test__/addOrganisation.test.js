@@ -58,55 +58,5 @@ describe('addOrganisation', () => {
 })
 
 
-// describe('universitySignUp', () => {
-  
-//     it('returns 400 for an existing university', async () => {
-//       const existingUniversity = new models.University({
-//         name: 'Test University',
-//         email: 'testuniversity@example.com',
-//         password: await bcrypt.hash('password123', saltRounds),
-//         phone: '1234567890',
-//         contract: [{ status: 'waitlist' }]
-//       });
-//       await existingUniversity.save();
-  
-//       const res = await request(app)
-//         .post('/university/signup')
-//         .send({
-//           name: 'Test University',
-//           email: 'testuniversity@example.com',
-//           password: 'password123',
-//           phone: '1234567890'
-//         })
-//         .expect(400);
-  
-//       expect(res.body.message).toBe('University already exists');
-//     });
-  
-//     it('returns 403 for a deleted university', async () => {
-//       const deletedUniversity = new models.University({
-//         name: 'Test University',
-//         email: 'testuniversity@exampl22e.com',
-//         password: await bcrypt.hash('password123', saltRounds),
-//         phone: '1234567890',
-//         isdeleted: true,
-//         contract: [{ status: 'waitlist' }]
-//       });
-//       await deletedUniversity.save();
-  
-//       const res = await request(app)
-//         .post('/university/signup')
-//         .send({
-//           name: 'Test University',
-//           email: 'testuniversity@exampl22e.com',
-//           password: 'password123',
-//           phone: '1234567890'
-//         })
-//         .expect(403);
-  
-//       expect(res.body.message).toBe('University Currently Moved To Trash. Please contact administrator');
-//     });
-//   });
-  
   
   

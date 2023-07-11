@@ -2,7 +2,7 @@ Tasks = {
 	assignees:Array,
 	status:String,
 	progress: String,
-	github:String,
+	github:Object,
 	notifications:String,
     startDate: String,
     endDate: String,
