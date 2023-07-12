@@ -18,7 +18,9 @@ const addTask = async (req,res) => {
         endDate,
         extension,
         orgId,
-        createdBy
+        createdBy,
+        title,
+        description
     } = req.body;
 
     try{
@@ -42,7 +44,9 @@ const addTask = async (req,res) => {
             endDate,
             extension,
             orgId,
-            createdBy
+            createdBy,
+            title,
+            description
         });
         await newTask.save();
 

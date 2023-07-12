@@ -3,7 +3,8 @@ Organisation = {
     phoneNo:String,
     email:String,
     location:String,
-    password:String
+    password:String,
+    notifications:Array
 }
 
 module.exports = Organisation

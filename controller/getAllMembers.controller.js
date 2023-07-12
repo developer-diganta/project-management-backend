@@ -11,7 +11,7 @@ const getAllMembers = async (req,res) => {
     const {
         id
     } = req.body;
-
+    console.log({id})
     try{
         
         const members = await models.Member.find({orgId:id}).select('_id name email phoneNo tasks').exec();

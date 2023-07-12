@@ -8,7 +8,9 @@ Tasks = {
     endDate: String,
     extension: String,
     orgId: String,
-	createdBy:String
+	createdBy:String,
+	title: String,
+	description: String
 }
 
 module.exports = Tasks;

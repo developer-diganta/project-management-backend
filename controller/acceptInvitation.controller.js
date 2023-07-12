@@ -25,7 +25,12 @@ const acceptInvitation = async(req,res) => {
         }
         member.orgId = organisationId;
         member.pendingOrgId = [];
-        member.save();
+        await member.save();
+        const organisation = await models.Organisation.findById(organisationId).exec();
+        const organisationNotifications = organisation.notifications;
+        organisationNotifications.push("Member Invitation Accepted");
+        organisation.notifications=organisationNotifications;
+        await organisation.save();
         res.status(200).json({"message":"Invitation Accepted"})
     }catch(error){
         console.log(error)

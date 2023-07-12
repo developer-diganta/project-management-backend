@@ -27,6 +27,8 @@ const getGitHubStats = require("./routes/getGitHubStats");
 const getAllMembers = require("./routes/getAllMembers");
 const getTasksForOrganisation = require("./routes/getTasksForOrganisation");
 const removeMember = require("./routes/removeMember");
+const getNotificationsForOrganisation = require("./routes/getNotificationsForOrganisation");
+const clearNotification = require("./routes/clearNotifications");
 
 app.use("/", home)
 app.use("/", addOrganisation)
@@ -42,6 +44,8 @@ app.use("/", getGitHubStats)
 app.use("/", getAllMembers)
 app.use("/", getTasksForOrganisation)
 app.use("/", removeMember)
+app.use("/", getNotificationsForOrganisation)
+app.use("/", clearNotification)
 
 
 module.exports = app;
