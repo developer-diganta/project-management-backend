@@ -33,7 +33,8 @@ const editOrganisationDetails = require("./routes/editOrganisationDetails");
 const memberLogin = require("./routes/memberLogin");
 const getMemberTasks = require("./routes/getMemberTasks");
 const getMemberDetails = require("./routes/getMemberDetails");
-
+const getTask = require("./routes/getTask");
+const editMemberDetails = require("./routes/editMemberDetails")
 
 app.use("/", home)
 app.use("/", addOrganisation)
@@ -55,5 +56,7 @@ app.use("/", editOrganisationDetails)
 app.use("/", memberLogin)
 app.use("/",getMemberTasks)
 app.use("/",getMemberDetails)
+app.use("/",getTask)
+app.use("/",editMemberDetails)
 
 module.exports = app;
