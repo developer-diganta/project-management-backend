@@ -14,20 +14,20 @@ const editTask = async (req,res) => {
     } = req.body;
 
     try{
-        
+        console.log("HERE HERE")
         // const validate = await joi.organisationSignUpSchema.validateAsync({ name,email,phoneNo,location,password });
 
         const task = await models.Task.findById(id).exec();
-
+        console.log(id)
         if(!task){
-            res.send(404).json({"message":"Invalid Id"});
+            res.status(404).json({"message":"Invalid Id"});
             return;
         }
 
         for(const key in toEdit){
             task[key] = toEdit[key];
         }
-
+        console.log(task)
         await task.save();
         
         res.status(200).json({"message":"Task edited"})

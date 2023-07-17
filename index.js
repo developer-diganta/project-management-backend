@@ -32,6 +32,7 @@ const clearNotification = require("./routes/clearNotifications");
 const editOrganisationDetails = require("./routes/editOrganisationDetails");
 const memberLogin = require("./routes/memberLogin");
 const getMemberTasks = require("./routes/getMemberTasks");
+const getMemberDetails = require("./routes/getMemberDetails");
 
 
 app.use("/", home)
@@ -53,5 +54,6 @@ app.use("/", clearNotification)
 app.use("/", editOrganisationDetails)
 app.use("/", memberLogin)
 app.use("/",getMemberTasks)
+app.use("/",getMemberDetails)
 
 module.exports = app;

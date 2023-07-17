@@ -20,9 +20,12 @@ Tasks = {
 		min:0,
 		max:100
 	},
-	github:{
-		type: String,
+	githubUsername:{
+		type:String
+	},
 
+	githubRepo:{
+		type:String
 	},
 	notifications: [
 		{
