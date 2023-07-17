@@ -17,6 +17,8 @@ const clearNotification = async(req,res) => {
             notifications.splice(notification,1);
             organisation.notifications=notifications;
             organisation.save();
+            res.status(200).json({"notifications":organisation.notifications});
+            return;
         }
         const member = await models.Member.findById(id).exec();
         if(member){
@@ -24,8 +26,12 @@ const clearNotification = async(req,res) => {
             notificationsMember.splice(notification,1);
             member.notifications=notificationsMember;
             member.save();
+            res.status(200).json({"notifications":member.notifications});
+            return
+
         }
-        res.status(200).json({"notifications":organisation.notifications});
+        res.status(200).json({"notifications":[]});
+
     }catch(error){
         console.log(error)
         res.status(500).json({"message":"Internal Server Error"})
