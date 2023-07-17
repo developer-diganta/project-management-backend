@@ -12,15 +12,19 @@ const clearNotification = async(req,res) => {
         // const validate =
         // const organisation = await models. 
         const organisation = await models.Organisation.findById(id).exec();
-        const notifications = organisation.notifications;
-        notifications.splice(notification,1);
-        organisation.notifications=notifications;
-        organisation.save();
+        if(organisation){
+            const notifications = organisation.notifications;
+            notifications.splice(notification,1);
+            organisation.notifications=notifications;
+            organisation.save();
+        }
         const member = await models.Member.findById(id).exec();
-        const notificationsMember = member.notifications;
-        notificationsMember.splice(notification,1);
-        member.notifications=notificationsMember;
-        member.save();
+        if(member){
+            const notificationsMember = member.notifications;
+            notificationsMember.splice(notification,1);
+            member.notifications=notificationsMember;
+            member.save();
+        }
         res.status(200).json({"notifications":organisation.notifications});
     }catch(error){
         console.log(error)
