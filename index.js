@@ -35,6 +35,8 @@ const getMemberTasks = require("./routes/getMemberTasks");
 const getMemberDetails = require("./routes/getMemberDetails");
 const getTask = require("./routes/getTask");
 const editMemberDetails = require("./routes/editMemberDetails")
+const getGitHubIssues = require("./routes/getGitHubIssues")
+const getGitHubIssueDetails = require("./routes/getGitHubIssueDetails")
 
 app.use("/", home)
 app.use("/", addOrganisation)
@@ -58,5 +60,7 @@ app.use("/",getMemberTasks)
 app.use("/",getMemberDetails)
 app.use("/",getTask)
 app.use("/",editMemberDetails)
+app.use("/",getGitHubIssues)
+app.use("/",getGitHubIssueDetails)
 
 module.exports = app;

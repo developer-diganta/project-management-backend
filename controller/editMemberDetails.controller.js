@@ -2,7 +2,7 @@ const { model } = require("mongoose");
 const models = require("../models/models");
 const joi = require("../config/Joi");
 var sanitize = require('mongo-sanitize');
-const editOrganisationDetails = async (req,res) => {
+const editMemberDetails = async (req,res) => {
     const {
         id,
         editDetails

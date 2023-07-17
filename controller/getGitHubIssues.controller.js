@@ -8,7 +8,7 @@ const generateToken = require("../middlewares/generateToken.middleware")
 const saltRounds = 10;
 const bcrypt = require('bcrypt');
 const { default: axios } = require('axios');
-const getGitHubStats = async (req,res) => {
+const getGitHubIssues = async (req,res) => {
     const {
         username,
         repo
@@ -26,7 +26,7 @@ const getGitHubStats = async (req,res) => {
             res.status(200).json({})
             return;
         }
-        const response = await axios.get(`http://api.github.com/repos/${username}/${repo}`);
+        const response = await axios.get(`http://api.github.com/repos/${username}/${repo}/issues`);
         res.status(200).json(response.data)
         // console.log(response)
     }catch(error){
@@ -35,4 +35,4 @@ const getGitHubStats = async (req,res) => {
     }
 }
 
-module.exports = getGitHubStats
+module.exports = getGitHubIssues

@@ -8,10 +8,11 @@ const generateToken = require("../middlewares/generateToken.middleware")
 const saltRounds = 10;
 const bcrypt = require('bcrypt');
 const { default: axios } = require('axios');
-const getGitHubStats = async (req,res) => {
+const getGitHubIssueDetails = async (req,res) => {
     const {
         username,
-        repo
+        repo,
+        number
     } = req.body;
 
     try{
@@ -21,12 +22,12 @@ const getGitHubStats = async (req,res) => {
         // const task = await models.Task.findById(id).exec();
         // const username = task.githubUsername;
         // const repo = task.githubRepo;
-        console.log(username,repo)
+        console.log(req.body)
         if(!username || !repo){
             res.status(200).json({})
             return;
         }
-        const response = await axios.get(`http://api.github.com/repos/${username}/${repo}`);
+        const response = await axios.get(`http://api.github.com/repos/${username}/${repo}/issues/${number}`);
         res.status(200).json(response.data)
         // console.log(response)
     }catch(error){
@@ -35,4 +36,4 @@ const getGitHubStats = async (req,res) => {
     }
 }
 
-module.exports = getGitHubStats
+module.exports = getGitHubIssueDetails
