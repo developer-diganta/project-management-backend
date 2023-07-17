@@ -30,10 +30,11 @@ const addTask = async (req,res) => {
         const organisation = await models.Organisation.find({_id:orgId}).exec();
         
         if(!organisation.length){
+            console.log(organisation)
             res.status(404).json({"message":"Organisation already exists"});
             return;
         }
-    
+        // console.log(req.body)
         const newTask = new models.Task({
             assignees,
             status,
@@ -48,14 +49,16 @@ const addTask = async (req,res) => {
             title,
             description
         });
+        console.log("TTTTT",req.body)
         await newTask.save();
-
+        const taskid = newTask._id;
         for(let i=0;i<assignees.length;i++){
             const assignee=assignees[i];
-            const currentAssignee = await models.Member.findById(assignee).exec();
-            currentAssignee.tasks=currentAssignee.tasks.push(newTask._id);
-            currentAssignee.notifications=currentAssignee.notifications.push('New Task Added');
-            await currentAssignee.save();
+            const currentAssignee = await models.Member.find({email:assignee}).exec();
+            console.log(currentAssignee)
+            currentAssignee[0].tasks.push(taskid);
+            currentAssignee[0].notifications.push('New Task Added');
+            await currentAssignee[0].save();
         }
 
         res.status(200).json({"message":"Task added"})

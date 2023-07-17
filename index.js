@@ -30,6 +30,9 @@ const removeMember = require("./routes/removeMember");
 const getNotificationsForOrganisation = require("./routes/getNotificationsForOrganisation");
 const clearNotification = require("./routes/clearNotifications");
 const editOrganisationDetails = require("./routes/editOrganisationDetails");
+const memberLogin = require("./routes/memberLogin");
+const getMemberTasks = require("./routes/getMemberTasks");
+
 
 app.use("/", home)
 app.use("/", addOrganisation)
@@ -48,6 +51,7 @@ app.use("/", removeMember)
 app.use("/", getNotificationsForOrganisation)
 app.use("/", clearNotification)
 app.use("/", editOrganisationDetails)
-
+app.use("/", memberLogin)
+app.use("/",getMemberTasks)
 
 module.exports = app;

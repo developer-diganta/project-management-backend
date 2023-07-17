@@ -11,7 +11,11 @@ let server;
 server = servers[current];
 
 const handler = async (req,res) => {
+    console.log("!2123")
     endPoint = req._parsedUrl.path;
+    console.log(req._parsedUrl)
+    
+    console.log(endPoint)
     try{
         const response = await axios.post(server+endPoint,{
             body:req.body

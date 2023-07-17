@@ -8,26 +8,33 @@ const generateToken = require("../middlewares/generateToken.middleware")
 const saltRounds = 10;
 const bcrypt = require('bcrypt');
 const { default: axios } = require('axios');
-const getGitHubStats = async (req,res) => {
+const getMemberTasks = async (req,res) => {
     const {
         id
     } = req.body;
 
+    
     try{
         
-        // const validate = await joi.organisationSignUpSchema.validateAsync({ name,email,phoneNo,location,password });
-       
-        const task = await models.Task.findById(id).exec();
-        const github = JSON.parse(task.github);
-        const username = github.username;
-        const repo = github.repo;
-        const response = await axios.get(`http://api.github.com/repos/${username}/${repo}`);
-        console.log(response)
-        res.status(200).json(response.data)
+        const taskList=[];
+    
+        // const tasks = await models.Task.find({orgId:id}).exec();
+    
+        const member = await models.Member.findById(id).exec();
+        const tasks = member.tasks;
+        for(var i=0;i<tasks.length;i++){
+            const task = tasks[i];
+            console.log(task)
+            const taskDetail  = await models.Task.findById(task).exec();
+            console.log(taskDetail)
+            taskList.push(taskDetail); 
+        }
+        res.status(200).json({taskList})
+
     }catch(error){
         console.log(error)
         res.status(500).json("Internal Server Error");
     }
 }
 
-module.exports = getGitHubStats
+module.exports = getMemberTasks

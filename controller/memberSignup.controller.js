@@ -21,7 +21,7 @@ const memberSignup = async (req,res) => {
         bcrypt.hash(password, saltRounds, async (err, hash) => {
 
             const member = await models.Member.find({ $or: [{email:email},{phoneNo:phoneNo}]}).exec();
-        
+            console.log("M",member)
             console.log(member)
             if(member.length){
                 res.status(404).json({"message":"Member already exists"});
