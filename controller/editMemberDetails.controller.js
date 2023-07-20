@@ -8,6 +8,8 @@ const editMemberDetails = async (req,res) => {
         editDetails
     } = req.body;
 
+
+
     try{
         const member = await models.Member.findById(id).exec();
         console.log({member})

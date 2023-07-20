@@ -23,7 +23,7 @@ const addOrganisation = async (req,res) => {
             const organisation = await models.Organisation.find({email:email}).exec();
         
             if(organisation.length){
-                res.status(401).json({"message":"Organisation already exists"});
+                res.status(200).json({"message":"Organisation already exists"});
                 return;
             }
     

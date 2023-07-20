@@ -1,0 +1,35 @@
+version: '3.8'
+services:
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+
+  node_server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: node_server
+    restart: always
+    ports:
+      - "3001:3001"
+    depends_on:
+      - mongodb
+
+  load_balancer:
+    build:
+      context: .
+      dockerfile: Dockerfile.loadbalancer
+    container_name: load_balancer
+    restart: always
+    ports:
+      - "3000:3000"
+    depends_on:
+      - node_server
+
+volumes:
+  mongodb_data:

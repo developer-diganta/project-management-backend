@@ -37,6 +37,26 @@ const getTask = require("./routes/getTask");
 const editMemberDetails = require("./routes/editMemberDetails")
 const getGitHubIssues = require("./routes/getGitHubIssues")
 const getGitHubIssueDetails = require("./routes/getGitHubIssueDetails")
+const getNotificationsForMember = require("./routes/getNotificationsForMember")
+
+const { model } = require("mongoose");
+const models = require("./models/models");
+
+// setInterval(async ()=>{
+//     const tasks = await models.Task.find({}).exec();
+//     console.log(tasks)
+//     for(let i=0;i<tasks.length;i++){
+
+//         if(new Date(tasks[i].endDate).getTime()<new Date().getTime() && tasks[i].status!=="Completed" || tasks[i].status!=="Halted"){
+//             tasks[i].status="Delayed";
+//             await tasks[i].save()
+//         }
+//     }
+//     console.log(tasks)
+//     // await tasks.save()
+// },3600000)
+
+
 
 app.use("/", home)
 app.use("/", addOrganisation)
@@ -62,5 +82,6 @@ app.use("/",getTask)
 app.use("/",editMemberDetails)
 app.use("/",getGitHubIssues)
 app.use("/",getGitHubIssueDetails)
+app.use("/",getNotificationsForMember)
 
 module.exports = app;

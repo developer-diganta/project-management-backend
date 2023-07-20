@@ -4,6 +4,6 @@ const router = express.Router();
 const acceptInvitation = require("../controller/acceptInvitation.controller");
 const author = require("../middlewares/verifyToken.middleware");
 
-router.post('/acceptInvitation', author ,acceptInvitation);
+router.post('/acceptInvitation' ,acceptInvitation);
 
 module.exports = router;
