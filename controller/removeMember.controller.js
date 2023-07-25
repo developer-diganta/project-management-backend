@@ -20,13 +20,17 @@ const removeMember = async(req,res) => {
                 // res.status(404).json({"message":"Member Not Found"})
             }
             member.orgId = null;
+            member.tasks=[];
             await member.save();            
-            const tasks = await models.Task.find({ordId:id}).exec();
+            const tasks = await models.Task.find({orgId:id}).exec();
             for(let k=0;k<tasks.length;k++){
                 const task = tasks[k];
-                if(task.assignees.includes(member._id)){
-
-                    task.assignees=task.assigness.splice(indexOf(member._id));
+                console.log("T",task.assignees)
+                if(task.assignees.includes(member.email)){
+                    console.log("E",task.assignees)
+                    console.log("E",member.email)
+                    task.assignees.splice(task.assignees.indexOf(member.email));
+                    console.log("{{{{{",task.assignees.splice(task.assignees.indexOf(member.email)))
                     await task.save();
                 }
             }

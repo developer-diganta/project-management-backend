@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 services:
   mongodb:
     image: mongo
@@ -6,30 +6,45 @@ services:
     restart: always
     ports:
       - "27017:27017"
+    networks:
+      - my_network
     volumes:
       - mongodb_data:/data/db
-
-  node_server:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: node_server
-    restart: always
-    ports:
-      - "3001:3001"
-    depends_on:
-      - mongodb
 
   load_balancer:
     build:
       context: .
-      dockerfile: Dockerfile.loadbalancer
+      dockerfile: Dockerfile
     container_name: load_balancer
     restart: always
     ports:
       - "3000:3000"
     depends_on:
-      - node_server
+      - mongodb
+      - server_app
+    links:
+      - mongodb
+    networks:
+      - my_network
+
+  server_app:
+    build:
+      context: .
+      dockerfile: Dockerfile.server
+    container_name: server_app
+    restart: always
+    ports:
+      - "3001:3001"
+    depends_on:
+      - mongodb
+    links:
+      - mongodb
+    networks:
+      - my_network
+
+networks:
+  my_network:
+    driver: bridge
 
 volumes:
   mongodb_data:

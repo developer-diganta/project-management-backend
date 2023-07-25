@@ -14,6 +14,7 @@ const editMemberDetails = async (req,res) => {
         const member = await models.Member.findById(id).exec();
         console.log({member})
         for(x in editDetails){
+            console.log(x)
             console.log(member[x])
             member[x]=editDetails[x];
         }

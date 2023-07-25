@@ -6,6 +6,7 @@ const cors = require("cors");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
+// const zoomMeetRouter = require("./routes/zoomMeet");
 
 const mongoose = require("mongoose");
 const { url } = require("./models/connection");
@@ -83,5 +84,11 @@ app.use("/",editMemberDetails)
 app.use("/",getGitHubIssues)
 app.use("/",getGitHubIssueDetails)
 app.use("/",getNotificationsForMember)
+
+// Other middleware and configurations...
+
+// Use the zoomMeetRouter for the /zoomMeet endpoint
+// app.use("/zoomMeet", zoomMeetRouter);
+
 
 module.exports = app;

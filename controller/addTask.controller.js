@@ -33,7 +33,7 @@ const addTask = async (req,res) => {
         
         if(!organisation.length){
             console.log(organisation)
-            res.status(404).json({"message":"Organisation already exists"});
+            res.status(404).json({"message":"Organisation does not exist"});
             return;
         }
         // console.log(req.body)

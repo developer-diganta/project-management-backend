@@ -8,7 +8,6 @@ const clearNotification = async(req,res) => {
     } = req.body;
     
     try{
-        console.log({orgID:id})
         // const validate =
         // const organisation = await models. 
         const organisation = await models.Organisation.findById(id).exec();
