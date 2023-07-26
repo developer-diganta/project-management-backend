@@ -4,6 +4,6 @@ const router = express.Router();
 const getGitHubStats = require("../controller/getGitHubStats.controller");
 const author = require("../middlewares/verifyToken.middleware");
 
-router.post('/getGitHubStats' ,getGitHubStats);
+router.post('/getGitHubStats', author ,getGitHubStats);
 
 module.exports = router;

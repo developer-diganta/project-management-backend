@@ -8,7 +8,7 @@ const generateToken = require("../middlewares/generateToken.middleware")
 const saltRounds = 10;
 const bcrypt = require('bcrypt');
 const { default: axios } = require('axios');
-const getGitHubIssueDetails = async (req,res) => {
+const getGitHubPrs = async (req,res) => {
     const {
         username,
         repo,
@@ -16,23 +16,17 @@ const getGitHubIssueDetails = async (req,res) => {
     } = req.body;
 
     try{
-        
-        // const validate = await joi.organisationSignUpSchema.validateAsync({ name,email,phoneNo,location,password });
-       
-        // const task = await models.Task.findById(id).exec();
-        // const username = task.githubUsername;
-        // const repo = task.githubRepo;
+
         console.log(req.body)
         if(!username || !repo){
             res.status(200).json({})
             return;
         }
 
-        const response = await axios.get(`http://api.github.com/repos/${username}/${repo}/issues/${number}`);
-        const prs = await axios.get(`http://api.github.com/repos/${username}/${repo}/pulls?issue=${number}`);
-        console.log("PR",prs.data)
+        const response = await axios.get(`http://api.github.com/repos/${username}/${repo}/pulls?issue=${number}`);
+        // console.log("PR",prs.data)
         // response.data.pr=PR;
-        console.log(response.data.issue_pull_requests)
+        // console.log(response.data.issue_pull_requests)
         res.status(200).json(response.data)
         // console.log(response)
     }catch(error){
@@ -41,4 +35,4 @@ const getGitHubIssueDetails = async (req,res) => {
     }
 }
 
-module.exports = getGitHubIssueDetails
+module.exports = getGitHubPrs;

@@ -6,7 +6,8 @@ const { OAuth2Client } = require('google-auth-library')
 const client = new OAuth2Client(process.env.GOOGLE_CLIENTID)
 const generateToken = require("../middlewares/generateToken.middleware")
 const saltRounds = 10;
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt');
+const mailSender = require('../utils/mailSender');
 const addTask = async (req,res) => {
     const {
         assignees,
@@ -62,6 +63,13 @@ const addTask = async (req,res) => {
             console.log(currentAssignee)
             currentAssignee[0].tasks.push(taskid);
             currentAssignee[0].notifications.push('New Task Added');
+            mailSender(assignee, "New Task Assigned","",`
+            <div>
+            <p>Hi! ${currentAssignee[0].name},</p>
+            <p>You have been assigned a new task. Headover to your kanban board to see all details. Happy Productivity!</p>
+            <p>Team ManagD</p>
+            </div>
+            `)
             await currentAssignee[0].save();
         }
 

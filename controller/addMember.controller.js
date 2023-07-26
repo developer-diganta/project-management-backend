@@ -1,6 +1,6 @@
 const { model } = require("mongoose");
 const models = require("../models/models");
-
+const mailSender = require("../utils/mailSender")
 const addMember = async(req,res) => {
     const {
         memberList,
@@ -26,6 +26,7 @@ const addMember = async(req,res) => {
             notifications.push('Invitation');
             member.notifications=notifications;
             member.save();
+            mailSender(memberEmail, "You have been invited!", "",'<span>You have been invited to join Argusoft. Headover to your <a href="http://localhost:3000/memberLogin">Managd dashboard</a> to join!</span>')
         }
         res.status(200).json({"message":"Sent Invitations to valid members"})
     }catch(error){

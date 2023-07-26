@@ -4,6 +4,6 @@ const router = express.Router();
 const getMemberTasks = require("../controller/getMemberTasks.controller");
 const author = require("../middlewares/verifyToken.middleware");
 
-router.post('/getMemberTasks', getMemberTasks);
+router.post('/getMemberTasks', author, getMemberTasks);
 
 module.exports = router;

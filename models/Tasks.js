@@ -45,10 +45,6 @@ Tasks = {
     required: true,
     validate: [dateValidator, "Start Date must be less than End Date"],
   },
-  extension: {
-    type: Number,
-    min: 1,
-  },
   orgId: {
     type: String,
     required: true,

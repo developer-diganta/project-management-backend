@@ -25,6 +25,7 @@
     "jsonwebtoken": "^9.0.1",
     "mongo-sanitize": "^1.1.0",
     "mongoose": "^7.3.2",
+    "node-mailjet": "^6.0.4",
     "supertest": "^6.3.3"
   },
   "devDependencies": {

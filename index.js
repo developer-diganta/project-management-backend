@@ -39,6 +39,8 @@ const editMemberDetails = require("./routes/editMemberDetails")
 const getGitHubIssues = require("./routes/getGitHubIssues")
 const getGitHubIssueDetails = require("./routes/getGitHubIssueDetails")
 const getNotificationsForMember = require("./routes/getNotificationsForMember")
+const sendOTP = require("./routes/sendOTP")
+const getGitHubPrs = require("./routes/getGitHubPrs")
 
 const { model } = require("mongoose");
 const models = require("./models/models");
@@ -84,6 +86,8 @@ app.use("/",editMemberDetails)
 app.use("/",getGitHubIssues)
 app.use("/",getGitHubIssueDetails)
 app.use("/",getNotificationsForMember)
+app.use("/",getGitHubPrs)
+app.use("/",sendOTP)
 
 // Other middleware and configurations...
 
