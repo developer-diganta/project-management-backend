@@ -7,23 +7,19 @@ const client = new OAuth2Client(process.env.GOOGLE_CLIENTID)
 const generateToken = require("../middlewares/generateToken.middleware")
 const saltRounds = 10;
 const bcrypt = require('bcrypt')
-const memberSignup = async (req,res) => {
+const resetPasswordOfMember = async (req,res) => {
     const {
-        name,
         email,
-        phoneNo,
         password,
         receivedOtp
     } = req.body;
 
     try{
         
-        // const validate = await joi.memberSignUpSchema.validateAsync({ name,email,phoneNo,password });
+        // const validate = await joi.resetPasswordOfMemberSchema.validateAsync({ name,email,phoneNo,password });
         bcrypt.hash(password, saltRounds, async (err, hash) => {
 
             const member = await models.Member.find({ $or: [{email:email},{phoneNo:phoneNo}]}).exec();
-            console.log("M",member)
-            console.log(member)
             if(member.length){
                 res.status(200).json({"message":"Member already exists"});
                 return;
@@ -35,21 +31,10 @@ const memberSignup = async (req,res) => {
             }
             await models.OTP.deleteMany({email:email}).exec();
 
-            const newMember = new models.Member({
-                name: name,
-                phoneNo: phoneNo,
-                email: email,
-                password:hash,
-                orgId:null,
-                tasks:[],
-                notifications:[],
-                meeting:[],
-                pendingOrgId:[]
-            });
-    
-            newMember.save();
+            member.password=hash;
+            await member.save();
             const token = generateToken(email);
-            res.status(200).json({token:token, id:newMember._id, email:email})
+            res.status(200).json({token:token, id:member._id, email:email})
         })
 
 
@@ -59,4 +44,4 @@ const memberSignup = async (req,res) => {
     }
 }
 
-module.exports = memberSignup
+module.exports = resetPasswordOfMember

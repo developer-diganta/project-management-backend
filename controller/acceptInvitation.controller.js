@@ -12,7 +12,6 @@ const acceptInvitation = async(req,res) => {
         // const organisation = await models. 
 
         const member = await models.Member.findById(id).exec();
-        console.log(member)
         if(!member){
             res.status(404).json({"message":"Member not found"});
             return;
@@ -33,7 +32,6 @@ const acceptInvitation = async(req,res) => {
         await organisation.save();
         res.status(200).json({"message":"Invitation Accepted"})
     }catch(error){
-        console.log(error)
         res.status(500).json({"message":"Internal Server Error"})
     }
 }

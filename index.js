@@ -41,9 +41,12 @@ const getGitHubIssueDetails = require("./routes/getGitHubIssueDetails")
 const getNotificationsForMember = require("./routes/getNotificationsForMember")
 const sendOTP = require("./routes/sendOTP")
 const getGitHubPrs = require("./routes/getGitHubPrs")
+const rejectInvitation = require("./routes/rejectInvitation")
 
 const { model } = require("mongoose");
 const models = require("./models/models");
+const resetPasswordOfMember = require("./routes/resetPasswordOfMember");
+const resetPasswordOfOrganisation = require("./routes/resetPasswordOfOrganisation");
 
 // setInterval(async ()=>{
 //     const tasks = await models.Task.find({}).exec();
@@ -88,7 +91,9 @@ app.use("/",getGitHubIssueDetails)
 app.use("/",getNotificationsForMember)
 app.use("/",getGitHubPrs)
 app.use("/",sendOTP)
-
+app.use("/",rejectInvitation)
+app.use("/", resetPasswordOfMember)
+app.use("/",resetPasswordOfOrganisation)
 // Other middleware and configurations...
 
 // Use the zoomMeetRouter for the /zoomMeet endpoint

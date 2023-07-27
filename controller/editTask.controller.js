@@ -23,12 +23,10 @@ const editTask = async (req,res) => {
             res.status(404).json({"message":"Invalid Id"});
             return;
         }
+        console.log(toEdit)
+        const resp = await models.Task.findByIdAndUpdate(id,toEdit).exec();
 
-        for(const key in toEdit){
-            task[key] = toEdit[key];
-        }
-        console.log(task)
-        await task.save();
+
         
         res.status(200).json({"message":"Task edited"})
 
