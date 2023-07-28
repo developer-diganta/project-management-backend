@@ -1,15 +1,5 @@
 version: "3.8"
 services:
-  mongodb:
-    image: mongo
-    container_name: mongodb
-    restart: always
-    ports:
-      - "27017:27017"
-    networks:
-      - my_network
-    volumes:
-      - mongodb_data:/data/db
 
   load_balancer:
     build:
@@ -20,10 +10,7 @@ services:
     ports:
       - "3000:3000"
     depends_on:
-      - mongodb
       - server_app
-    links:
-      - mongodb
     networks:
       - my_network
 
@@ -35,10 +22,6 @@ services:
     restart: always
     ports:
       - "3001:3001"
-    depends_on:
-      - mongodb
-    links:
-      - mongodb
     networks:
       - my_network
 
@@ -46,5 +29,3 @@ networks:
   my_network:
     driver: bridge
 
-volumes:
-  mongodb_data:
