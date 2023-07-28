@@ -6,7 +6,7 @@ const httpProxy = require('http-proxy');
 const cors = require('cors');
 
 const instances = [
-  { target: `http://server_app:3001` },
+  { target: `https://managd-backend-server.onrender.com/` },
   { target: 'http://server_app:3002' },
 ];
 
