@@ -6,8 +6,8 @@ const httpProxy = require('http-proxy');
 const cors = require('cors');
 
 const instances = [
-  { target: `https://my_network:3001` },
-  { target: 'https://server_app:3002' },
+  { target: `http://server_app:3001` },
+  { target: 'http://server_app:3002' },
 ];
 
 const proxy = httpProxy.createProxyServer();
