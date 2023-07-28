@@ -11,16 +11,13 @@ const getAllMembers = async (req,res) => {
     const {
         id
     } = req.body;
-    console.log({id})
-    try{
+        try{
         
         const members = await models.Member.find({orgId:id}).select('_id name email phoneNo tasks').exec();
-        console.log(members)
-        res.status(200).json({members})
+                res.status(200).json({members})
 
     }catch(error){
-        console.log(error)
-        res.status(500).json("Internal Server Error");
+                res.status(500).json("Internal Server Error");
     }
 }
 

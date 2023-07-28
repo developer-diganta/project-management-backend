@@ -8,20 +8,15 @@ const editOrganisationDetails = async (req,res) => {
         editDetails
     } = req.body;
     const id = sanitize(unsanitisedId);
-    console.log(editDetails)
-    try{
+        try{
         const organisation = await models.Organisation.findById(id).exec();
-        // console.log({organisation})
-        for(x in editDetails){
-            // console.log(organisation[x])
-            organisation[x]=editDetails[x];
+        //         for(x in editDetails){
+            //             organisation[x]=editDetails[x];
         }
         await organisation.save();
-        // console.log({organisation})
-        res.status(200).json({"message":"Details Updated!"});
+        //         res.status(200).json({"message":"Details Updated!"});
     }catch(error){
-        console.log(error)
-        res.status(500).json({"message":"Internal Server Error"})
+                res.status(500).json({"message":"Internal Server Error"})
     }
 }
 

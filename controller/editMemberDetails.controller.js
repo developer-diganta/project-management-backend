@@ -12,18 +12,13 @@ const editMemberDetails = async (req,res) => {
 
     try{
         const member = await models.Member.findById(id).exec();
-        console.log({member})
-        for(x in editDetails){
-            console.log(x)
-            console.log(member[x])
-            member[x]=editDetails[x];
+                for(x in editDetails){
+                                    member[x]=editDetails[x];
         }
         await member.save();
-        console.log({member})
-        res.status(200).json({"message":"Details Updated!"});
+                res.status(200).json({"message":"Details Updated!"});
     }catch(error){
-        console.log(error)
-        res.status(500).json({"message":"Internal Server Error"})
+                res.status(500).json({"message":"Internal Server Error"})
     }
 }
 

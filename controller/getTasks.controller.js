@@ -20,8 +20,7 @@ const getMemberTasks = async (req,res) => {
         const task = await models.Task.findById(id).exec();
         res.status(200).json({task})
     }catch(error){
-        console.log(error)
-        res.status(500).json("Internal Server Error");
+                res.status(500).json("Internal Server Error");
     }
 }
 

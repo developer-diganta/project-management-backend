@@ -14,25 +14,21 @@ const editTask = async (req,res) => {
     } = req.body;
 
     try{
-        console.log("HERE HERE")
-        // const validate = await joi.organisationSignUpSchema.validateAsync({ name,email,phoneNo,location,password });
+                // const validate = await joi.organisationSignUpSchema.validateAsync({ name,email,phoneNo,location,password });
 
         const task = await models.Task.findById(id).exec();
-        console.log(id)
-        if(!task){
+                if(!task){
             res.status(404).json({"message":"Invalid Id"});
             return;
         }
-        console.log(toEdit)
-        const resp = await models.Task.findByIdAndUpdate(id,toEdit).exec();
+                const resp = await models.Task.findByIdAndUpdate(id,toEdit).exec();
 
 
         
         res.status(200).json({"message":"Task edited"})
 
     }catch(error){
-        console.log(error)
-        res.status(500).json("Internal Server Error");
+                res.status(500).json("Internal Server Error");
     }
 }
 

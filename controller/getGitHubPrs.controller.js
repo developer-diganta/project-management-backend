@@ -17,21 +17,16 @@ const getGitHubPrs = async (req,res) => {
 
     try{
 
-        console.log(req.body)
-        if(!username || !repo){
+                if(!username || !repo){
             res.status(200).json({})
             return;
         }
 
         const response = await axios.get(`http://api.github.com/repos/${username}/${repo}/pulls?issue=${number}`);
-        // console.log("PR",prs.data)
-        // response.data.pr=PR;
-        // console.log(response.data.issue_pull_requests)
-        res.status(200).json(response.data)
-        // console.log(response)
-    }catch(error){
-        console.log(error)
-        res.status(500).json("Internal Server Error");
+        //         // response.data.pr=PR;
+        //         res.status(200).json(response.data)
+        //     }catch(error){
+                res.status(500).json("Internal Server Error");
     }
 }
 

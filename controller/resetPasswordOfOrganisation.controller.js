@@ -25,8 +25,7 @@ const resetPasswordOfOrganisation = async (req,res) => {
                 return;
             }
             const otp = await models.OTP.find({otp:receivedOtp}).exec();
-            console.log({otp})
-            if(!otp[0] || otp[0].otp!==receivedOtp || otp[0].email!==email){
+                        if(!otp[0] || otp[0].otp!==receivedOtp || otp[0].email!==email){
                 res.status(200).json({"message":"401"})
                 return;
             }
@@ -40,8 +39,7 @@ const resetPasswordOfOrganisation = async (req,res) => {
 
 
     }catch(error){
-        console.log(error)
-        res.status(500).json("Internal Server Error");
+                res.status(500).json("Internal Server Error");
     }
 }
 

@@ -24,7 +24,7 @@ const sendOtp = async (req,res) => {
         });
         await newOTP.save();
         mailSender(email,"ManagD OTP for Login","",`
-        <p>Your One Time Password(OTP) for your ManagD Organisation SignUp is <i><u>${otp}</u></i>. Please note that this OTP is valid only for 10 minutes! We are excited to see you at ManagD!</p>
+        <p>Your One Time Password(OTP) for your ManagD Account is <i><u>${otp}</u></i>. Please note that this OTP is valid only for 10 minutes! <b>Please DO NOT share this OTP with anyone<b> We are excited to see you at ManagD!<br/> <i style="font-size:14px">Not related or did not send any request? Please ignore this email</i></p>
         `)
         res.status(200).json({otp});
 

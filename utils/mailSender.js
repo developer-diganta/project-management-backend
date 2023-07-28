@@ -28,11 +28,9 @@ const mailjet = require('node-mailjet').apiConnect(
       })
       request
         .then(result => {
-          console.log(result.body)
-        })
+                  })
         .catch(err => {
-          console.log(err.statusCode)
-        })
+                  })
       
 
   }

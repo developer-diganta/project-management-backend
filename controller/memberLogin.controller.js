@@ -17,18 +17,13 @@ const memberLogin = async (req,res) => {
         
         // const validate = await joi.organisationLoginSchema.validateAsync({ email,password });
         const member = await models.Member.findOne({email:email}).exec();
-        console.log(member)
-        console.log("HERE")
-        if(!member){
-            console.log("OOO")
-            res.status(404).json({"message":"Not Found"});
+                        if(!member){
+                        res.status(404).json({"message":"Not Found"});
             return;
         }
         bcrypt.compare(password, member.password, (error,result) =>
         {
-            console.log("a")
-            console.log(result)
-            if(!result){
+                                    if(!result){
                 res.status(401).json({"message":"Unauthorized"})
                 return;
             }
@@ -37,8 +32,7 @@ const memberLogin = async (req,res) => {
         })
 
     }catch(error){
-        console.log(error)
-        res.status(500).json("Internal Server Error");
+                res.status(500).json("Internal Server Error");
     }
 }
 

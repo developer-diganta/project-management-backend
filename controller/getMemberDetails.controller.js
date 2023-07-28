@@ -21,8 +21,7 @@ const getMemberDetails = async (req,res) => {
       res.status(200).json({member});
       return;
     }catch(error){
-        console.log(error)
-        res.status(500).json("Internal Server Error");
+                res.status(500).json("Internal Server Error");
     }
 }
 

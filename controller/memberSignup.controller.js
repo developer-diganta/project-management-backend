@@ -22,9 +22,7 @@ const memberSignup = async (req,res) => {
         bcrypt.hash(password, saltRounds, async (err, hash) => {
 
             const member = await models.Member.find({ $or: [{email:email},{phoneNo:phoneNo}]}).exec();
-            console.log("M",member)
-            console.log(member)
-            if(member.length){
+                                    if(member.length){
                 res.status(200).json({"message":"Member already exists"});
                 return;
             }
@@ -54,8 +52,7 @@ const memberSignup = async (req,res) => {
 
 
     }catch(error){
-        console.log(error)
-        res.status(500).json("Internal Server Error");
+                res.status(500).json("Internal Server Error");
     }
 }
 

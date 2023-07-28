@@ -50,16 +50,14 @@ const resetPasswordOfOrganisation = require("./routes/resetPasswordOfOrganisatio
 
 // setInterval(async ()=>{
 //     const tasks = await models.Task.find({}).exec();
-//     console.log(tasks)
-//     for(let i=0;i<tasks.length;i++){
+//     //     for(let i=0;i<tasks.length;i++){
 
 //         if(new Date(tasks[i].endDate).getTime()<new Date().getTime() && tasks[i].status!=="Completed" || tasks[i].status!=="Halted"){
 //             tasks[i].status="Delayed";
 //             await tasks[i].save()
 //         }
 //     }
-//     console.log(tasks)
-//     // await tasks.save()
+//     //     // await tasks.save()
 // },3600000)
 
 

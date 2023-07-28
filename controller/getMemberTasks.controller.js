@@ -24,16 +24,13 @@ const getMemberTasks = async (req,res) => {
         const tasks = member.tasks;
         for(var i=0;i<tasks.length;i++){
             const task = tasks[i];
-            console.log(task)
-            const taskDetail  = await models.Task.findById(task).exec();
-            console.log(taskDetail)
-            taskList.push(taskDetail); 
+                        const taskDetail  = await models.Task.findById(task).exec();
+                        taskList.push(taskDetail); 
         }
         res.status(200).json({taskList})
 
     }catch(error){
-        console.log(error)
-        res.status(500).json("Internal Server Error");
+                res.status(500).json("Internal Server Error");
     }
 }
 

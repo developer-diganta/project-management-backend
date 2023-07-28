@@ -13,10 +13,9 @@ const deleteTask = async(req,res) => {
             const member = members[i];
             await models.Member.findById(member).exec();
         }
-
+zz33
     }catch(error){
-        console.log(error)
-        res.status(500).json({"message":"Internal Server Error"})
+                res.status(500).json({"message":"Internal Server Error"})
     }
 }
 

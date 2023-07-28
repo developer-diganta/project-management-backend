@@ -7,14 +7,12 @@ const getNotificationsForOrganisation = async(req,res) => {
     } = req.body;
     
     try{
-        console.log({orgID:id})
-        // const validate =
+                // const validate =
         // const organisation = await models. 
         const organisation = await models.Organisation.findById(id).exec();
         res.status(200).json({"notifications":organisation.notifications});
     }catch(error){
-        console.log(error)
-        res.status(500).json({"message":"Internal Server Error"})
+                res.status(500).json({"message":"Internal Server Error"})
     }
 }
 

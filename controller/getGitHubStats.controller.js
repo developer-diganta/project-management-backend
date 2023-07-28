@@ -21,17 +21,14 @@ const getGitHubStats = async (req,res) => {
         // const task = await models.Task.findById(id).exec();
         // const username = task.githubUsername;
         // const repo = task.githubRepo;
-        console.log(username,repo)
-        if(!username || !repo){
+                if(!username || !repo){
             res.status(200).json({})
             return;
         }
         const response = await axios.get(`http://api.github.com/repos/${username}/${repo}`);
         res.status(200).json(response.data)
-        // console.log(response)
-    }catch(error){
-        console.log(error)
-        res.status(500).json("Internal Server Error");
+        //     }catch(error){
+                res.status(500).json("Internal Server Error");
     }
 }
 

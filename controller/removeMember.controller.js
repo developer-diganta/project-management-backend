@@ -25,21 +25,16 @@ const removeMember = async(req,res) => {
             const tasks = await models.Task.find({orgId:id}).exec();
             for(let k=0;k<tasks.length;k++){
                 const task = tasks[k];
-                console.log("T",task.assignees)
-                if(task.assignees.includes(member.email)){
-                    console.log("E",task.assignees)
-                    console.log("E",member.email)
-                    task.assignees.splice(task.assignees.indexOf(member.email));
-                    console.log("{{{{{",task.assignees.splice(task.assignees.indexOf(member.email)))
-                    await task.save();
+                                if(task.assignees.includes(member.email)){
+                                                            task.assignees.splice(task.assignees.indexOf(member.email));
+                                        await task.save();
                 }
             }
         }
 
         res.status(200).json({"message":"Removed valid members"})
     }catch(error){
-        console.log(error)
-        res.status(500).json({"message":"Internal Server Error"})
+                res.status(500).json({"message":"Internal Server Error"})
     }
 }
 

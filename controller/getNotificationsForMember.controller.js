@@ -7,15 +7,12 @@ const getNotificationsForMember = async(req,res) => {
     } = req.body;
     
     try{
-        console.log({orgID:id})
-        // const validate =
+                // const validate =
         // const Member = await models. 
         const member = await models.Member.findById(id).exec();
-        console.log(member.notifications)
-        res.status(200).json({"notifications":member.notifications});
+                res.status(200).json({"notifications":member.notifications});
     }catch(error){
-        console.log(error)
-        res.status(500).json({"message":"Internal Server Error"})
+                res.status(500).json({"message":"Internal Server Error"})
     }
 }
 

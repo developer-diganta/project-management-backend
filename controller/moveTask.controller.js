@@ -27,8 +27,7 @@ const moveTask = async (req,res) => {
         res.status(200).json({"message":"Task moved"})
 
     }catch(error){
-        console.log(error)
-        res.status(500).json("Internal Server Error");
+                res.status(500).json("Internal Server Error");
     }
 }
 

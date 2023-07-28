@@ -7,8 +7,7 @@ const getOrganisationDetails = async (req,res) => {
         unsanitisedId
     } = req.body;
     const id = sanitize(unsanitisedId);
-    console.log(id)
-    try{
+        try{
         const organisation = await models.Organisation.findById(id).exec();
         res.status(200).json(organisation);
     }catch(error){

@@ -52,8 +52,7 @@ describe('addOrganisation', () => {
             location:'Test Location'
         })
         .expect(401);
-        console.log(res)
-        expect(res.body.message).toEqual('Organisation already exists');
+                expect(res.body.message).toEqual('Organisation already exists');
     });
 })
 

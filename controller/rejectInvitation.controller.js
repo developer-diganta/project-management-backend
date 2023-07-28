@@ -10,10 +10,8 @@ const rejectInvitation = async(req,res) => {
     try{
         // const validate =
         // const organisation = await models. 
-        console.log("ORGEMAIL",orgEmail)
-            const member = await models.Member.findById(id).exec();
-        console.log(member)
-        if(!member){
+                    const member = await models.Member.findById(id).exec();
+                if(!member){
             res.status(404).json({"message":"Member not found"});
             return;
         }
@@ -24,8 +22,7 @@ const rejectInvitation = async(req,res) => {
        await member.save()
        res.status(200).json({"message":"Invitation Removed"})
     }catch(error){
-        console.log(error)
-        res.status(500).json({"message":"Internal Server Error"})
+                res.status(500).json({"message":"Internal Server Error"})
     }
 }
 
