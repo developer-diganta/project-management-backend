@@ -3,19 +3,24 @@ const models = require("../models/models");
 
 const deleteTask = async(req,res) => {
     const {
-        id
+        taskId
     } = req.body;
     
     try{
-        const task = await models.Task.findById(id).exec();
-        const members = task.assignees;
-        for(var i=0;i<members.length;i++){
-            const member = members[i];
-            await models.Member.findById(member).exec();
+        const task = await models.Task.findById(taskId).exec();
+        if(!task){
+            res.status(404).json({"message":"No task found"})
         }
-zz33
+        const members = task.assignees;
+        for(let i=0;i<members.length;i++){
+            await members[i].splice(members[i].indexOf(taskId));
+            await members[i].save();
+        }
+        await models.Task.findByIdAndDelete(taskId).exec();
+        res.json("200").json({"message":"Task Deleted"});
     }catch(error){
-                res.status(500).json({"message":"Internal Server Error"})
+        console.log(error)
+        res.status(500).json({"message":"Internal Server Error"})
     }
 }
 

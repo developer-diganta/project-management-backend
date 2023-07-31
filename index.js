@@ -47,17 +47,20 @@ const { model } = require("mongoose");
 const models = require("./models/models");
 const resetPasswordOfMember = require("./routes/resetPasswordOfMember");
 const resetPasswordOfOrganisation = require("./routes/resetPasswordOfOrganisation");
+const deleteTask = require("./routes/deleteTask");
 
 // setInterval(async ()=>{
 //     const tasks = await models.Task.find({}).exec();
-//     //     for(let i=0;i<tasks.length;i++){
+//     console.log(tasks)
+//     for(let i=0;i<tasks.length;i++){
 
 //         if(new Date(tasks[i].endDate).getTime()<new Date().getTime() && tasks[i].status!=="Completed" || tasks[i].status!=="Halted"){
 //             tasks[i].status="Delayed";
 //             await tasks[i].save()
 //         }
 //     }
-//     //     // await tasks.save()
+//     console.log(tasks)
+//     // await tasks.save()
 // },3600000)
 
 
@@ -92,6 +95,7 @@ app.use("/",sendOTP)
 app.use("/",rejectInvitation)
 app.use("/", resetPasswordOfMember)
 app.use("/",resetPasswordOfOrganisation)
+app.use("/",deleteTask)
 // Other middleware and configurations...
 
 // Use the zoomMeetRouter for the /zoomMeet endpoint
